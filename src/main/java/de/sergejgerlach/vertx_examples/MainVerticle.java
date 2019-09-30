@@ -2,15 +2,18 @@ package de.sergejgerlach.vertx_examples;
 
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Promise;
+import io.vertx.core.Vertx;
 
 public class MainVerticle extends AbstractVerticle {
 
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
     vertx.createHttpServer().requestHandler(req -> {
-      req.response()
-        .putHeader("content-type", "text/plain")
-        .end("Hello from Vert.x!");
+        vertx.setTimer(3000, id -> {
+            req.response()
+            .putHeader("content-type", "text/plain")
+            .end("Hello from Vert.x! - " + System.currentTimeMillis());
+        });
     }).listen(8888, http -> {
       if (http.succeeded()) {
         startPromise.complete();
@@ -20,4 +23,9 @@ public class MainVerticle extends AbstractVerticle {
       }
     });
   }
+
+    public static void main(String[] args) throws Exception {
+        Vertx vertx = Vertx.vertx();
+        vertx.deployVerticle(MainVerticle.class.getName());
+    }
 }
