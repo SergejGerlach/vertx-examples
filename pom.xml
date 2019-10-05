@@ -5,7 +5,7 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>de.sergejgerlach</groupId>
-  <artifactId>vertx-examples</artifactId>
+  <artifactId>vertx-playground</artifactId>
   <version>1.0.0-SNAPSHOT</version>
 
   <properties>
