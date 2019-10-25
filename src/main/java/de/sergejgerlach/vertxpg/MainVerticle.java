@@ -1,4 +1,4 @@
-package de.sergejgerlach.vertx_examples;
+package de.sergejgerlach.vertxpg;
 
 import io.vertx.core.*;
 import io.vertx.core.http.HttpServer;
